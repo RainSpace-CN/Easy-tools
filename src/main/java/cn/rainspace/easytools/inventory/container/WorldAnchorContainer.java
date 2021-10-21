@@ -11,24 +11,26 @@ import net.minecraft.item.Items;
 
 public class WorldAnchorContainer extends Container {
     private IInventory container;
-    public WorldAnchorContainer(int id, PlayerInventory playerInventory, IInventory inventory){
-        super(ModContainerType.WORLD_ANCHOR_CONTAINER.get(),id);
-        this.addSlot(new MineralSlot(inventory, 0, 80, 32,this));
-        for(int i = 0; i < 3; ++i) {
-            for(int j = 0; j < 9; ++j) {
+
+    public WorldAnchorContainer(int id, PlayerInventory playerInventory, IInventory inventory) {
+        super(ModContainerType.WORLD_ANCHOR_CONTAINER.get(), id);
+        this.addSlot(new MineralSlot(inventory, 0, 80, 32, this));
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 9; ++j) {
                 this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
-        for(int k = 0; k < 9; ++k) {
+        for (int k = 0; k < 9; ++k) {
             this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
         }
         this.container = inventory;
-        
+
     }
 
-    public boolean isMineral(ItemStack itemStack){
-        return itemStack.getItem()== Items.IRON_INGOT||itemStack.getItem()== Items.GOLD_INGOT||itemStack.getItem()== Items.DIAMOND||itemStack.getItem()== Items.EMERALD;
+    public boolean isMineral(ItemStack itemStack) {
+        return itemStack.getItem() == Items.IRON_INGOT || itemStack.getItem() == Items.GOLD_INGOT || itemStack.getItem() == Items.DIAMOND || itemStack.getItem() == Items.EMERALD;
     }
+
     @Override
     public ItemStack quickMoveStack(PlayerEntity player, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
@@ -42,8 +44,8 @@ public class WorldAnchorContainer extends Container {
                 }
 
                 slot.onQuickCraft(itemstack1, itemstack);
-            } else  {
-                if (!this.isMineral(itemstack1)||!this.moveItemStackTo(itemstack1, 0, 1, false)) {
+            } else {
+                if (!this.isMineral(itemstack1) || !this.moveItemStackTo(itemstack1, 0, 1, false)) {
                     if (index < 28) {
                         if (!this.moveItemStackTo(itemstack1, 28, 37, false)) {
                             return ItemStack.EMPTY;
@@ -69,7 +71,7 @@ public class WorldAnchorContainer extends Container {
         return itemstack;
     }
 
-    public boolean stillValid(PlayerEntity player){
+    public boolean stillValid(PlayerEntity player) {
         return this.container.stillValid(player);
     }
 }

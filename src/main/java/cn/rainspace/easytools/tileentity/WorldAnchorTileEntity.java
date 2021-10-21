@@ -13,39 +13,39 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.world.ForgeChunkManager;
 
 public class WorldAnchorTileEntity extends AbstractMachineTileEntity {
-	public WorldAnchorTileEntity() {
-		super(ModTileEntityType.WORLD_ANCHOR.get(),1);
-	}
+    public WorldAnchorTileEntity() {
+        super(ModTileEntityType.WORLD_ANCHOR.get(), 1);
+    }
 
-	public void turnOn(){
-		super.turnOn();
-		ChunkPos chunkpos = new ChunkPos(getBlockPos());
-		ForgeChunkManager.forceChunk((ServerWorld) level, Const.MOD_ID, getBlockPos(), chunkpos.x, chunkpos.z, true, true);
-		this.level.setBlockAndUpdate(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(WorldAnchorBlock.LIT, Boolean.valueOf(this.isLit())));
-	}
+    public void turnOn() {
+        super.turnOn();
+        ChunkPos chunkpos = new ChunkPos(getBlockPos());
+        ForgeChunkManager.forceChunk((ServerWorld) level, Const.MOD_ID, getBlockPos(), chunkpos.x, chunkpos.z, true, true);
+        this.level.setBlockAndUpdate(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(WorldAnchorBlock.LIT, Boolean.valueOf(this.isLit())));
+    }
 
-	public void turnOff(){
-		super.turnOff();
-		ChunkPos chunkpos = new ChunkPos(getBlockPos());
-		ForgeChunkManager.forceChunk((ServerWorld) level, Const.MOD_ID, getBlockPos(), chunkpos.x, chunkpos.z, false, true);
-		if(!this.isRemoved()){
-			this.level.setBlockAndUpdate(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(WorldAnchorBlock.LIT, Boolean.valueOf(this.isLit())));
-		}
-	}
+    public void turnOff() {
+        super.turnOff();
+        ChunkPos chunkpos = new ChunkPos(getBlockPos());
+        ForgeChunkManager.forceChunk((ServerWorld) level, Const.MOD_ID, getBlockPos(), chunkpos.x, chunkpos.z, false, true);
+        if (!this.isRemoved()) {
+            this.level.setBlockAndUpdate(this.worldPosition, this.level.getBlockState(this.worldPosition).setValue(WorldAnchorBlock.LIT, Boolean.valueOf(this.isLit())));
+        }
+    }
 
-	public void running(){
-		super.running();
-	}
+    public void running() {
+        super.running();
+    }
 
-	@Override
-	public ITextComponent getDisplayName() {
-		return new TranslationTextComponent("container.world_anchor");
-	}
+    @Override
+    public ITextComponent getDisplayName() {
+        return new TranslationTextComponent("container.world_anchor");
+    }
 
-	@Override
-	public Container createMenu(int sycID, PlayerInventory inventory, PlayerEntity player) {
-		return new WorldAnchorContainer(sycID, inventory, this.inventory);
-	}
+    @Override
+    public Container createMenu(int sycID, PlayerInventory inventory, PlayerEntity player) {
+        return new WorldAnchorContainer(sycID, inventory, this.inventory);
+    }
 
 
 }

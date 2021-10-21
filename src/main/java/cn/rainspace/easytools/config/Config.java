@@ -3,7 +3,7 @@ package cn.rainspace.easytools.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class Config {
-	public static ForgeConfigSpec COMMON_CONFIG;
+    public static ForgeConfigSpec COMMON_CONFIG;
     public static ForgeConfigSpec.IntValue DROP_CHANCE;
     public static ForgeConfigSpec.IntValue TIMES;
 

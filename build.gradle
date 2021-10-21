@@ -16,7 +16,7 @@ version = '1.0.0'
 
 java {
     archivesBaseName = 'easytools'
-    toolchain.languageVersion = JavaLanguageVersion.of(8)
+    toolchain.languageVersion = JavaLanguageVersion.of(11)
 }
 
 minecraft {

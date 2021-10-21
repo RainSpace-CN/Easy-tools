@@ -1,7 +1,7 @@
 package cn.rainspace.easytools.gui.screen;
 
-import cn.rainspace.easytools.utils.Const;
 import cn.rainspace.easytools.inventory.container.WorldAnchorContainer;
+import cn.rainspace.easytools.utils.Const;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -16,7 +16,7 @@ public class WorldAnchorScreen extends ContainerScreen<WorldAnchorContainer> {
     }
 
     @Override
-    public void init(){
+    public void init() {
         super.init();
         this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
     }

@@ -12,8 +12,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModContainerType {
     public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Const.MOD_ID);
-    public static final RegistryObject<ContainerType<WorldAnchorContainer>> WORLD_ANCHOR_CONTAINER = CONTAINERS.register("world_anchor_container", ()->
-            IForgeContainerType.create((int windowId, PlayerInventory inv, PacketBuffer data)->
-                    new WorldAnchorContainer(windowId,inv, new Inventory(1))));
+    public static final RegistryObject<ContainerType<WorldAnchorContainer>> WORLD_ANCHOR_CONTAINER = CONTAINERS.register("world_anchor_container", () ->
+            IForgeContainerType.create((int windowId, PlayerInventory inv, PacketBuffer data) ->
+                    new WorldAnchorContainer(windowId, inv, new Inventory(1))));
 
 }
