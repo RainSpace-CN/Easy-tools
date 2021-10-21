@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/cube_bottom_top",
+	"textures": {
+		"down": "easytools:block/world_anchor_down",
+		"side": "easytools:block/world_anchor_side",
+		"up": "easytools:block/world_anchor_up"
+	}
+}
