@@ -6,8 +6,11 @@ import cn.rainspace.easytools.utils.Const;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+
+import javax.annotation.Nullable;
 
 public class AutoFishScreen extends ContainerScreen<AutoFishContainer> {
     private final ResourceLocation AUTO_FISH_CONTAINER_RESOURCE = new ResourceLocation(Const.MOD_ID, "textures/gui/container/container_3.png");

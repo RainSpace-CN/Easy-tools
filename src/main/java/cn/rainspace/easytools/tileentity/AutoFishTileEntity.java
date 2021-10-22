@@ -2,14 +2,17 @@ package cn.rainspace.easytools.tileentity;
 
 import cn.rainspace.easytools.inventory.container.AutoFishContainer;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+
+import javax.annotation.Nullable;
 
 public class AutoFishTileEntity extends AbstractMachineTileEntity{
 
@@ -47,5 +50,16 @@ public class AutoFishTileEntity extends AbstractMachineTileEntity{
            super.tick();
         }
     }
+    @Nullable
+    @Override
+    public SUpdateTileEntityPacket getUpdatePacket() {
+        return new SUpdateTileEntityPacket(this.getBlockPos(), 1, getUpdateTag());
+    }
 
+    @Override
+    public CompoundNBT getUpdateTag() {
+        CompoundNBT compoundNBT = super.getUpdateTag();
+        compoundNBT.putInt("litTime", getLitTime());
+        return compoundNBT;
+    }
 }

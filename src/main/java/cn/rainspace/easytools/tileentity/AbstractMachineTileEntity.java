@@ -100,5 +100,7 @@ public abstract class AbstractMachineTileEntity extends TileEntity implements IT
     public Inventory getInventory() {
         return this.inventory;
     }
-
+    public int getLitTime() {
+        return litTime;
+    }
 }
