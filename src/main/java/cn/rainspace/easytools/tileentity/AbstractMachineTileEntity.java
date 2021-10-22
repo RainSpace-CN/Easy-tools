@@ -81,7 +81,9 @@ public abstract class AbstractMachineTileEntity extends TileEntity implements IT
 
     @Override
     public void load(BlockState state, CompoundNBT nbt) {
-        if (!this.level.isClientSide()) {
+        //May be wrong
+        //TODO
+        if (this.level==null || !this.level.isClientSide) {
             ListNBT items = (ListNBT) nbt.get("Items");
             this.inventory.fromTag(items);
         }

@@ -1,4 +1,6 @@
 {
   "block.easytools.world_anchor": "世界锚",
-  "container.world_anchor": "世界锚"
+  "container.world_anchor": "世界锚",
+  "block.easytools.auto_fish": "自动钓鱼机",
+  "container.auto_fish": "自动钓鱼机"
 }

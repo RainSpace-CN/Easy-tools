@@ -1,4 +1,6 @@
 {
   "block.easytools.world_anchor": "World Anchor",
-  "container.world_anchor": "World Anchor"
+  "container.world_anchor": "World Anchor",
+  "block.easytools.auto_fish": "Auto Fisher",
+  "container.auto_fish": "Auto Fisher"
 }

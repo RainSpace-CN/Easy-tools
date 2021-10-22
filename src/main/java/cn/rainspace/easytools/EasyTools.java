@@ -1,6 +1,7 @@
 package cn.rainspace.easytools;
 
 import cn.rainspace.easytools.block.ModBlocks;
+import cn.rainspace.easytools.gui.screen.AutoFishScreen;
 import cn.rainspace.easytools.gui.screen.WorldAnchorScreen;
 import cn.rainspace.easytools.inventory.container.ModContainerType;
 import cn.rainspace.easytools.item.ModItems;
@@ -57,6 +58,7 @@ public class EasyTools {
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         event.enqueueWork(() -> {
             ScreenManager.register(ModContainerType.WORLD_ANCHOR_CONTAINER.get(), WorldAnchorScreen::new);
+            ScreenManager.register(ModContainerType.AUTO_FISH_CONTAINER.get(), AutoFishScreen::new);
         });
     }
 

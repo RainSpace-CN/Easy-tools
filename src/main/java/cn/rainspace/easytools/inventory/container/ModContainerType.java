@@ -15,5 +15,9 @@ public class ModContainerType {
     public static final RegistryObject<ContainerType<WorldAnchorContainer>> WORLD_ANCHOR_CONTAINER = CONTAINERS.register("world_anchor_container", () ->
             IForgeContainerType.create((int windowId, PlayerInventory inv, PacketBuffer data) ->
                     new WorldAnchorContainer(windowId, inv, new Inventory(1))));
+    public static final RegistryObject<ContainerType<AutoFishContainer>> AUTO_FISH_CONTAINER = CONTAINERS.register("auto_fish_container", ()->
+            IForgeContainerType.create((int windowId, PlayerInventory inv, PacketBuffer data)->
+                    new AutoFishContainer(windowId,inv, new Inventory(2))));
+
 
 }

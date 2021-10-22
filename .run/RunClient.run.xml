@@ -1,0 +1,22 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RunClient" type="Application" factoryName="Application">
+    <envs>
+      <env name="MOD_CLASSES" value="examplemod%%$PROJECT_DIR$/../EasyTools\build\resources\main;examplemod%%$PROJECT_DIR$/../EasyTools\build\classes\java\main" />
+      <env name="MCP_MAPPINGS" value="official_1.16.5" />
+      <env name="MCP_VERSION" value="20210115.111550" />
+      <env name="FORGE_VERSION" value="36.2.8" />
+      <env name="assetIndex" value="1.16" />
+      <env name="assetDirectory" value="C:\Users\Jack\.gradle\caches\forge_gradle\assets" />
+      <env name="nativesDirectory" value="$PROJECT_DIR$/../EasyTools\build\natives" />
+      <env name="FORGE_GROUP" value="net.minecraftforge" />
+      <env name="target" value="fmluserdevclient" />
+      <env name="MC_VERSION" value="1.16.5" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="net.minecraftforge.userdev.LaunchTesting" />
+    <module name="easytools.main" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
