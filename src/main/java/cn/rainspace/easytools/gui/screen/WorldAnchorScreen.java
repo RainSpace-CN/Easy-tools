@@ -13,6 +13,8 @@ public class WorldAnchorScreen extends ContainerScreen<WorldAnchorContainer> {
 
     public WorldAnchorScreen(WorldAnchorContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);
+        this.imageWidth=176;
+        this.imageHeight=166;
     }
 
     @Override

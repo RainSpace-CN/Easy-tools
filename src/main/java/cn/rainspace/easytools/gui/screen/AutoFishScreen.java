@@ -13,6 +13,8 @@ public class AutoFishScreen extends ContainerScreen<AutoFishContainer> {
 
     public AutoFishScreen(AutoFishContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
         super(screenContainer, inv, titleIn);
+//        this.imageWidth=176;
+//        this.imageHeight=166;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class AutoFishScreen extends ContainerScreen<AutoFishContainer> {
     @Override
     protected void renderBg(MatrixStack matrixStack, float partialTicks, int x, int y) {
         this.minecraft.getTextureManager().bind(AUTO_FISH_CONTAINER_RESOURCE);
+//        System.out.println(this.width);
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
         blit(matrixStack, i, j, 0, 0, imageWidth, imageHeight, this.imageWidth, imageHeight);

@@ -7,8 +7,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -31,24 +29,7 @@ public class AutoFishTileEntity extends AbstractMachineTileEntity{
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT nbt){
-        nbt.putBoolean("isAvailable",isAvailable);
-        ItemStack itemStack_0 = this.inventory.getItem(0).copy();
-        nbt.put("item_rod", itemStack_0.serializeNBT());
-        ItemStack itemStack_1 = this.inventory.getItem(1).copy();
-        nbt.put("item_mineral", itemStack_1.serializeNBT());
-        return super.save(nbt);
-    }
-
-    @Override
-    public void load(BlockState state, CompoundNBT nbt){
-        isAvailable = nbt.getBoolean("isAvailable");
-        this.inventory.addItem(ItemStack.of(nbt.getCompound("item_rod")));
-        this.inventory.addItem(ItemStack.of(nbt.getCompound("item_mineral")));
-        super.load(state, nbt);
-    }
-
-    public void running() {
+    public void tick() {
         if(!level.isClientSide) {
             BlockPos blockPos=this.getBlockPos();
             double X=blockPos.getX();
@@ -63,7 +44,8 @@ public class AutoFishTileEntity extends AbstractMachineTileEntity{
             }
         }
         if(isAvailable) {
-            super.running();
+           super.tick();
         }
     }
+
 }
