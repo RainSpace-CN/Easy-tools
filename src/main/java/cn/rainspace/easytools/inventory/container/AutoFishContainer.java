@@ -2,7 +2,6 @@ package cn.rainspace.easytools.inventory.container;
 
 import cn.rainspace.easytools.inventory.AutoFishMineralSlot;
 import cn.rainspace.easytools.inventory.AutoFishRodSlot;
-import com.sun.media.jfxmedia.logging.Logger;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -79,5 +78,6 @@ public class AutoFishContainer extends Container {
     public boolean isFishingRod(ItemStack itemStack){
         return itemStack.getItem()== Items.FISHING_ROD;
     }
+
 
 }
