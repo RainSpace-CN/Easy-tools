@@ -1,5 +1,6 @@
 package cn.rainspace.easytools.inventory.container;
 
+import cn.rainspace.easytools.tileentity.LitTimeNumber;
 import cn.rainspace.easytools.utils.Const;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -17,7 +18,7 @@ public class ModContainerType {
                     new WorldAnchorContainer(windowId, inv, new Inventory(1))));
     public static final RegistryObject<ContainerType<AutoFishContainer>> AUTO_FISH_CONTAINER = CONTAINERS.register("auto_fish_container", ()->
             IForgeContainerType.create((int windowId, PlayerInventory inv, PacketBuffer data)->
-                    new AutoFishContainer(windowId,inv, new Inventory(2))));
+                    new AutoFishContainer(windowId,inv, new Inventory(2),new LitTimeNumber())));
 
 
 }

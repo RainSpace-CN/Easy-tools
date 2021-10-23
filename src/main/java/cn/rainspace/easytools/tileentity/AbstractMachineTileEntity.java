@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntityType;
 
 public abstract class AbstractMachineTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
     protected Inventory inventory;
+    protected LitTimeNumber litTimeNumber=new LitTimeNumber();
     private AbstractMachineTileEntity self = this;
     private int litTime = 0;
     private int VALUE = 100;
@@ -44,6 +45,8 @@ public abstract class AbstractMachineTileEntity extends TileEntity implements IT
     @Override
     public void tick() {
         if (!level.isClientSide) {
+            litTimeNumber.set(0,litTime);
+            litTimeNumber.set(1, VALUE);
             if (litTime == 0) {
                 ItemStack itemStack = inventory.getItem(0);
                 if (!itemStack.isEmpty()) {
@@ -81,12 +84,11 @@ public abstract class AbstractMachineTileEntity extends TileEntity implements IT
 
     @Override
     public void load(BlockState state, CompoundNBT nbt) {
-        //May be wrong
-        //TODO
-        if (this.level==null || !this.level.isClientSide) {
-            ListNBT items = (ListNBT) nbt.get("Items");
+        ListNBT items = (ListNBT) nbt.get("Items");
+        if(items!=null){
             this.inventory.fromTag(items);
         }
+        this.litTime=nbt.getInt("LitTime");
         super.load(state, nbt);
     }
 
@@ -94,6 +96,7 @@ public abstract class AbstractMachineTileEntity extends TileEntity implements IT
     public CompoundNBT save(CompoundNBT nbt) {
         ListNBT items = this.inventory.createTag();
         nbt.put("Items", items);
+        nbt.putInt("LitTime", this.litTime);
         return super.save(nbt);
     }
 
@@ -102,5 +105,8 @@ public abstract class AbstractMachineTileEntity extends TileEntity implements IT
     }
     public int getLitTime() {
         return litTime;
+    }
+    public void setLitTime(int time) {
+        litTime=time;
     }
 }

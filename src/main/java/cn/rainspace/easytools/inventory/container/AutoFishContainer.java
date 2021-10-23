@@ -2,6 +2,7 @@ package cn.rainspace.easytools.inventory.container;
 
 import cn.rainspace.easytools.inventory.AutoFishMineralSlot;
 import cn.rainspace.easytools.inventory.AutoFishRodSlot;
+import cn.rainspace.easytools.tileentity.LitTimeNumber;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -9,11 +10,12 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.IIntArray;
 
 public class AutoFishContainer extends Container {
     private IInventory container;
-
-    public AutoFishContainer(int id, PlayerInventory playerInventory, IInventory inventory) {
+    private LitTimeNumber intArray;
+    public AutoFishContainer(int id, PlayerInventory playerInventory, IInventory inventory, LitTimeNumber intArray) {
         super(ModContainerType.AUTO_FISH_CONTAINER.get(),id);
         this.addSlot(new AutoFishMineralSlot(inventory, 0, 80,54 ,this));
         this.addSlot(new AutoFishRodSlot(inventory, 1, 80, 18,this));
@@ -26,6 +28,9 @@ public class AutoFishContainer extends Container {
             this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
         }
         this.container = inventory;
+        this.intArray = intArray;
+
+        addDataSlots(this.intArray);
     }
 
     @Override
@@ -38,7 +43,6 @@ public class AutoFishContainer extends Container {
         //May be wrong,should pay attention
         //TODO
         ItemStack itemstack = ItemStack.EMPTY;
-        System.out.println(index);
         Slot slot = this.slots.get(index);
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
@@ -79,5 +83,8 @@ public class AutoFishContainer extends Container {
         return itemStack.getItem()== Items.FISHING_ROD;
     }
 
+    public IIntArray getIntArray() {
+        return intArray;
+    }
 
 }

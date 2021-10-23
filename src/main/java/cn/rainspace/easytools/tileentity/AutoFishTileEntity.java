@@ -6,17 +6,15 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-import javax.annotation.Nullable;
 
 public class AutoFishTileEntity extends AbstractMachineTileEntity{
 
     private boolean isAvailable=false;
+
     public AutoFishTileEntity() {
         super(ModTileEntityType.AUTO_FISH.get(), 2);
     }
@@ -28,38 +26,26 @@ public class AutoFishTileEntity extends AbstractMachineTileEntity{
 
     @Override
     public Container createMenu(int sycID, PlayerInventory inventory, PlayerEntity player) {
-        return new AutoFishContainer(sycID, inventory, this.inventory);
+        return new AutoFishContainer(sycID, inventory, this.inventory,litTimeNumber);
     }
 
     @Override
-    public void tick() {
-        if(!level.isClientSide) {
-            BlockPos blockPos=this.getBlockPos();
-            double X=blockPos.getX();
-            double Y=blockPos.getY();
-            double Z=blockPos.getZ();
-            BlockPos checkedPos=new BlockPos(X,Y-1,Z);
-            Block checkedBlock = level.getBlockState(checkedPos).getBlock();
-            if(checkedBlock.equals(Blocks.WATER)) {
-                isAvailable=true;
-            } else {
-                isAvailable=false;
-            }
+    public void running() {
+        BlockPos blockPos=this.getBlockPos();
+        double X=blockPos.getX();
+        double Y=blockPos.getY();
+        double Z=blockPos.getZ();
+        BlockPos checkedPos=new BlockPos(X,Y-1,Z);
+        Block checkedBlock = level.getBlockState(checkedPos).getBlock();
+        if(checkedBlock.equals(Blocks.WATER)) {
+            isAvailable=true;
+        } else {
+            isAvailable=false;
         }
         if(isAvailable) {
-           super.tick();
+            setLitTime(getLitTime()-1);
         }
     }
-    @Nullable
-    @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        return new SUpdateTileEntityPacket(this.getBlockPos(), 1, getUpdateTag());
-    }
 
-    @Override
-    public CompoundNBT getUpdateTag() {
-        CompoundNBT compoundNBT = super.getUpdateTag();
-        compoundNBT.putInt("litTime", getLitTime());
-        return compoundNBT;
-    }
+
 }
